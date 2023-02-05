@@ -1,0 +1,27 @@
+node_modules
+*.log*
+.nuxt
+.nitro
+.cache
+.output
+.env
+dist
+**node_modules
+node_modules/
+.vscode/
+**.vscode/*
+venv
+venv/
+**venv/
+**venv/*
+**.nuxt
+**.nuxt/*
+**.nuxt/dist
+**.nuxt/dist/*
+
+# Ignore pycache
+__pycache__/
+**/__pycache__/*
+**/**/__pycache__/*
+**/**/**/__pycache__/*
+**/**/**/**/__pycache__/*

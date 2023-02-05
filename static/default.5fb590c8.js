@@ -1,0 +1,1 @@
+import{s as e,o as t,l as o,K as r,B as s}from"./entry.ff60f4bd.js";const c={};function n(a,l){return t(),o("div",null,[r(" aaaaaaaaaaaaaaaaa "),s(a.$slots,"default")])}const f=e(c,[["render",n]]);export{f as default};
