@@ -1,4 +1,5 @@
-const baseURL = 'http://localhost:8000'
+// const baseURL = 'http://localhost:8000'
+const baseURL = ''
 export const useAuth = () => {
     const user = useState<any>('user', ()=>null)
     const isAuthenticated = computed(() => user.value !== null)
