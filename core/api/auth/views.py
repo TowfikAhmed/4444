@@ -19,42 +19,6 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['name'] = user.username
         return token
 
-
-@api_view(['GET', 'POST'])
-def session(request):
-    print('sission',request.data, request.headers, request.user)
-    userdata = {}
-    if request.user.is_authenticated:
-        userdata = {
-            'id': request.user.id,
-            'username': request.user.username,
-            'email': request.user.email,
-            'name': request.user.first_name,
-            'image': None,
-        }
-    return Response(userdata)
-
-@api_view(['GET'])
-def providers(request):
-    print('providers',request.data, request.headers, request.user)
-    return Response({
-        'credentials': {
-            'id': 'credentials',
-            'name': 'Credentials',
-            'type': 'credentials',
-            'signinUrl': 'http://localhost:3000/signin',
-            'callbackUrl': 'http://localhost:8000/api/auth/callback/credentials',
-        },
-    })
-
-@api_view(['GET'])
-def csrf(request):
-    print('csrf',request.data, request.headers, request.user)
-    data = {
-        "csrfToken": "25676e66af8ac91d92af221a6886e59526b92b3e7ec71ededbb78db3404624d8"
-    }
-    return Response(data)
-
 @api_view(['GET','POST', 'OPTIONS'])
 def loginUser(request):
     user = request.user

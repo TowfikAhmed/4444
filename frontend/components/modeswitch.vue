@@ -1,6 +1,6 @@
 <template>
     <label>
-        <input ref="target" @change="modeChanged($event)" class='toggle-checkbox' type='checkbox'>
+        <input :checked="colorMode.preference == 'dark'" ref="target" @change="modeChanged($event)" class='toggle-checkbox' type='checkbox'>
         <div class='toggle-slot'>
             <div class='sun-icon-wrapper'>
                 <div class="iconify sun-icon" data-icon="feather-sun" data-inline="false">
@@ -53,6 +53,7 @@ function modeChanged(e:any){
   background-color: white;
   box-shadow: 0px 1px 2px #999faa6e;
   transition: background-color 250ms;
+  overflow: hidden;
 }
 
 .toggle-checkbox:checked ~ .toggle-slot {

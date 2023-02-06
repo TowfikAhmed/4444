@@ -52,8 +52,8 @@
         </div>
         <p class="my-1">Scale</p>
         <div class="flex gap-1">
-            <transition-scale>
-                <div v-if="isVisible" class="bg-orange-800 p-10">Hello</div>
+            <transition-scale appear>
+                <div v-if="isVisible" class="bg-orange-800 p-10">Hello1</div>
             </transition-scale>
             <transition-scale :scale="0.5">
                 <div v-if="isVisible" class="bg-orange-800 p-10">Hello</div>
@@ -63,20 +63,6 @@
             </transition-scale>
         </div>
         <button @click="isVisible = !isVisible" class="btn">Toggle</button>
-
-        
-            {{ targetIsVisible }}
-            {{ target2IsVisible }}
-        <transition-scale>
-                <div v-if="targetIsVisible" class="bg-orange-800 p-10">Hello</div>
-        </transition-scale>
-        <div class="" ref="target"></div>
-          <div ref="target2" class="p-20 bg-teal-300 m-10">
-            <h1>Hello world</h1>
-            {{user}}
-
-            <nuxt-link to="/login">Login</nuxt-link>
-          </div>
     </div>
 </template>
 
@@ -89,11 +75,6 @@
     const { user } = useAuth() 
     const name = ref('John Doe')
     const isVisible = ref(true)
-
-    const target = ref(null)
-    const targetIsVisible = useElementVisibility(target)
-    const target2 = ref(null)
-    const target2IsVisible = useElementVisibility(target2)
 </script>
 
 <style scoped>

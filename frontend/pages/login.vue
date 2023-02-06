@@ -8,8 +8,8 @@
     <body class="h-full">
     ```
   -->
-  <div class="flex min-h-[90vh]">
-    <div class="flex flex-1 flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+  <div class="flex gap-2 min-h-[90vh]">
+    <div class="flex flex-1 flex-col justify-center py-12 lg:flex-none ">
       <div class="mx-auto w-full max-w-sm lg:w-96">
         <div class="flex gap-2 items-center">
           <img class="h-12 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company" />
@@ -19,7 +19,7 @@
         <div class="mt-8">
           <div>
             <div>
-              <p class="text-sm font-medium text-gray-700">Sign in with</p>
+              <p class="text-sm font-medium text-gray-500">Sign in with</p>
 
               <div class="mt-1 grid grid-cols-3 gap-3">
                 <div>
@@ -64,16 +64,16 @@
           <div class="mt-6">
             <form class="space-y-6">
               <div>
-                <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
+                <label for="email" class="block text-sm font-medium text-gray-500">Email address</label>
                 <div class="mt-1">
-                  <input v-model="logindata.email" id="email" name="email" type="text" autocomplete="email" required="" class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" />
+                  <input v-model="logindata.email" id="email" name="email" type="text" autocomplete="email" required="" class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:text-gray-600" />
                 </div>
               </div>
 
               <div class="space-y-1">
-                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                <label for="password" class="block text-sm font-medium text-gray-500">Password</label>
                 <div class="mt-1">
-                  <input v-model="logindata.password" id="password" name="password" type="password" autocomplete="current-password" required="" class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" />
+                  <input v-model="logindata.password" id="password" name="password" type="password" autocomplete="current-password" required="" class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:text-gray-600" />
                 </div>
               </div>
 
