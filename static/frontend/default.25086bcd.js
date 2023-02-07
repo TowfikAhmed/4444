@@ -1,0 +1,1 @@
+import{s as e,o as t,l as s,x as o,S as r}from"./entry.b3ab6209.js";const c={},n={class:"dark:bg-neutral-700"};function l(a,d){return t(),s("div",n,[o(" aaaaaaaaaaaaaaaaa "),r(a.$slots,"default")])}const f=e(c,[["render",l]]);export{f as default};

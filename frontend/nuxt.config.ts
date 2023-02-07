@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     app: {
         buildAssetsDir: '/static/frontend',
     },
+    
     colorMode: {
         preference: 'dark',
         classSuffix: ''
