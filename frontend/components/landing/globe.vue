@@ -33,7 +33,7 @@ onMounted(()=>{
 function init(){
     canvas = document.querySelector("#canvas")
     camera = new THREE.PerspectiveCamera(75, canvas!.clientWidth / canvas!.clientHeight, 0.1, 1000)
-    camera.position.z = 4
+    camera.position.z = 3.7
     renderer.setSize(canvas!.clientWidth, canvas!.clientHeight)
     renderer.setClearColor(0x000000, 0)
     canvas!.appendChild(renderer.domElement)
@@ -44,13 +44,13 @@ function init(){
 
 function addGlobe(){
     let geometry = new THREE.SphereGeometry( 2, 64, 64 );
-    let texture = new THREE.TextureLoader().load( '/static/frontend/images/globe.jpg' );
+    let texture = new THREE.TextureLoader().load( '/static/frontend/images/globe.png' );
     let material = new THREE.MeshPhongMaterial( {
         map: texture,
         side: THREE.DoubleSide,
         transparent: true,
-        opacity: 1,
-        alphaTest: .5
+        opacity: .9,
+        alphaTest: .16,
     } );
     globe = new THREE.Mesh( geometry, material );
     scene.add( globe );

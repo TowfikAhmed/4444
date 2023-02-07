@@ -1,6 +1,7 @@
 <template>
-    <div>
+    <div class="relative">
         <canvas ref="canvas" class="canvas"></canvas>
+        <div class="absolute h-[100vh] w-[100vw] bg-slate-50 dark:bg-slate-900 opacity-90 left-0 top-0"></div>
     </div>
 </template>
 
@@ -85,7 +86,7 @@ canvas {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-  opacity: .25;
+  opacity: 1;
 }
 
 </style>
