@@ -19,6 +19,7 @@
     "@heroicons/vue": "^2.0.14",
     "@vueuse/nuxt": "^9.12.0",
     "gsap": "^3.11.4",
-    "nuxt-swiper": "^0.1.9"
+    "nuxt-swiper": "^0.1.9",
+    "three": "^0.149.0"
   }
 }

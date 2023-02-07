@@ -24,14 +24,8 @@
                 </p>
                 </div>
             </div>
-            <div class="relative mt-12 sm:mx-auto sm:max-w-lg lg:col-span-6 lg:mx-0 lg:mt-0 lg:flex lg:max-w-none lg:items-center">
-              
-                <div class="relative ml-auto w-full rounded-lg shadow-lg lg:max-w-md">
-                    <button type="button" class="relative block w-full overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                        <span class="sr-only">Watch our video to learn more</span>
-                        <img class="w-full" src="/static/frontend/images/globe.png" alt="" />
-                    </button>
-                </div>
+            <div class="relative mt-12 sm:mx-auto sm:max-w-lg lg:col-span-6 lg:mx-0 lg:mt-0 lg:flex justify-end lg:max-w-none lg:items-center">
+                <LandingGlobe class="" />
             </div>
             </div>
         </main>
