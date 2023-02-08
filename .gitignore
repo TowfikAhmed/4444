@@ -8,8 +8,8 @@ node_modules
 dist
 **node_modules
 node_modules/
-.vscode/
-**.vscode/*
+# .vscode/
+# **.vscode/*
 venv
 venv/
 **venv/
