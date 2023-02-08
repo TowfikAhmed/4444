@@ -62,7 +62,7 @@ function addGlobe(){
         map: texture,
         side: THREE.DoubleSide,
         transparent: true,
-        opacity: 1,
+        opacity: .5,
         alphaTest: 0
     } );
     outer = new THREE.Mesh( geometry, material );
