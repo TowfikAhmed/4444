@@ -4,6 +4,7 @@ export default defineNuxtConfig({
     ssr: false,
     app: {
         buildAssetsDir: '/static/frontend',
+        pageTransition: { name: 'page', mode: 'out-in' }
     },
     
     colorMode: {
@@ -12,5 +13,5 @@ export default defineNuxtConfig({
     },
     tailwindcss:{
         configPath: 'tailwind.config.js'
-    }
+    },
 })

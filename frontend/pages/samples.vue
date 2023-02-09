@@ -24,14 +24,13 @@
         </Swiper>
         <nuxt-img src="https://wallpaperaccess.com/full/1356237.jpg" class="w-[200px] inline" />
         <Icon name="uil:github" class="m-10 text-orange-500 text-2xl" />
+
     </div>
 </template>
 
 <script setup>
-    import { ref } from 'vue'
     definePageMeta({
         layout: 'public',
-        middleware: ['auth']
     })
     const { user } = useAuth() 
     const name = ref('John Doe')

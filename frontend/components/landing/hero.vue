@@ -25,7 +25,9 @@
                 </div>
             </div>
             <div class="relative mt-12 sm:mx-auto sm:max-w-lg lg:col-span-6 lg:mx-0 lg:mt-0 lg:flex justify-end lg:max-w-none lg:items-center">
-                <LandingGlobe class="" />
+                <ClientOnly>
+                    <LandingGlobe class="" />
+                </ClientOnly>
             </div>
             </div>
         </main>

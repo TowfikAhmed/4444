@@ -1,16 +1,11 @@
 <template>
     <div>
-        <div id="canvas" class="mx-auto w-[300px] h-[300px] md:w-[500px] md:h-[500px] "></div>
+        <div ref="canvas" id="canvas" class="mx-auto w-[300px] h-[300px] md:w-[500px] md:h-[500px] "></div>
     </div>
 </template>
 
 <script setup lang="ts">
 import * as THREE from 'three'
-// bloom 
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
-import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
-
 
 const { x, y } = useMouse()
 const scene = new THREE.Scene()
@@ -27,11 +22,12 @@ let rotationSpeed = 0.005
 let outer = <any>null
 
 onMounted(()=>{
+    canvas.value = ref('canvas').value
     init()
 })
 
 function init(){
-    canvas = document.querySelector("#canvas")
+    console.log(canvas, canvas!.clientWidth)
     camera = new THREE.PerspectiveCamera(75, canvas!.clientWidth / canvas!.clientHeight, 0.1, 1000)
     camera.position.z = 3.7
     renderer.setSize(canvas!.clientWidth, canvas!.clientHeight)
@@ -44,7 +40,7 @@ function init(){
 
 function addGlobe(){
     let geometry = new THREE.SphereGeometry( 2, 64, 64 );
-    let texture = new THREE.TextureLoader().load( '/static/frontend/images/globe.png' );
+    let texture = new THREE.TextureLoader().load( '/static/frontend/images/t5.png' );
     let material = new THREE.MeshPhongMaterial( {
         map: texture,
         side: THREE.DoubleSide,
@@ -79,11 +75,13 @@ function animate(){
         rotationSpeed += .005
     }
     renderer.render(scene, camera)
+    if(canvas){
+        onWindowResize()
+    }
 }
 
 // watch x y change  with old new
 watch([x, y], ([x, y], [oldX, oldY]) => {
-    console.log(x, oldX)
     if (x > oldX && rotationSpeed < .1){
         rotationSpeed += .01
     } else if (rotationSpeed > -.1) {
@@ -93,9 +91,11 @@ watch([x, y], ([x, y], [oldX, oldY]) => {
 
 
 function onWindowResize(){
-    camera.aspect = canvas.clientWidth / canvas.clientHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize( canvas.clientWidth, canvas.clientHeight );
+    if(canvas && canvas.clientWidth){
+        camera.aspect = canvas.clientWidth / canvas.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize( canvas.clientWidth, canvas.clientHeight );
+    }
 }
 
 
