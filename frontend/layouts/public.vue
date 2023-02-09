@@ -2,7 +2,7 @@
     <div class="">
         <ClientOnly>
             <div class="fixed -z-50">
-                <Ball />
+                <LandingGrid/>
             </div>
         </ClientOnly>
         <Navbar />
