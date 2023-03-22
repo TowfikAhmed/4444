@@ -1,9 +1,9 @@
 
 <template>
-    <div class="flex justify-center items-center gap-2 min-h-[90vh] max-w-7xl mx-auto">
-      <ClientOnly>
-          <LandingGlobe class="flex-1" />
-      </ClientOnly>
+    <div class="flex justify-center items-center gap-2 h-screen max-w-7xl mx-auto">
+      <div class="flex-1">
+        <img src="/static/frontend/images/globe-9.gif" alt="" srcset="">
+      </div>
       <div class="flex flex-1 flex-col justify-center py-12 ">
         <div class="mx-auto w-full max-w-md lg:w-120 p-10 card">
           <span class="c"></span>

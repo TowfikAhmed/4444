@@ -20,18 +20,18 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from core.views import index
-
-urlpatterns = [
+urlpatterns = [] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns = urlpatterns + [
     path('admin/', admin.site.urls),
     path('api/auth/', include('core.api.auth.urls')),
     path('api/dash/', include('core.api.dash.urls')),
-    path('', index, name='index'),
-    # path('<str:param>', index, name='index2'),
-    # path('<str:param>/', index, name='index2'),
-    # path('<str:param>/<str:param2>', index, name='index2'),
-    # path('<str:param>/<str:param2>/', index, name='index2'),
-    # path('<str:param>/<str:param2>/<str:param3>', index, name='index2'),
-    # path('<str:param>/<str:param2>/<str:param3>/', index, name='index2'),
-    # path('<str:param>/<str:param2>/<str:param3>/<str:param4>', index, name='index2'),
-    # path('<str:param>/<str:param2>/<str:param3>/<str:param4>/', index, name='index2'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('', index),
+    path('<str:param>', index),
+    path('<str:param>/', index),
+    path('<str:param>/<str:param2>', index),
+    path('<str:param>/<str:param2>/', index),
+    path('<str:param>/<str:param2>/<str:param3>', index),
+    path('<str:param>/<str:param2>/<str:param3>/', index),
+    path('<str:param>/<str:param2>/<str:param3>/<str:param4>', index),
+    path('<str:param>/<str:param2>/<str:param3>/<str:param4>/', index),
+] 

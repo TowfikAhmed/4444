@@ -1,7 +1,7 @@
 export const useApi = () => {
 
-    // const baseURL = ''
-    const baseURL = 'http://127.0.0.1:8000'
+    const baseURL = ''
+    // const baseURL = 'http://127.0.0.1:8000'
 
     const jwt = useCookie('jwt')
     const head = computed(() => {
