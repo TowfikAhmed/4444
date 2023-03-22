@@ -26,7 +26,6 @@
             <span class="sr-only">View notifications</span>
             <BellIcon class="h-6 w-6" aria-hidden="true" />
           </button>
-          <Modeswitch/>
 
           <!-- Profile dropdown -->
           <Menu as="div" class="relative ml-3">

@@ -4,7 +4,7 @@
 
 body{
     @apply bg-gray-50;
-    font-family: 'consolas', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 @layer components{
     .btn{
@@ -23,16 +23,6 @@ body{
   opacity: 0;
   filter: blur(1rem);
   transform: scale(.9);
-}
-
-
-
-
-
-
-.dark > body {
-    background-color: #091a28;
-    color: #ebf4f1;
 }
 
 .cp-btn,

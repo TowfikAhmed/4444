@@ -1,6 +1,6 @@
-const baseURL = 'http://localhost:8000'
-// const baseURL = ''
+const Api = useApi()
 export const useAuth = () => {
+    const baseURL = Api.baseURL
     const user = useState<any>('user', ()=>null)
     const isAuthenticated = computed(() => user.value !== null)
     const jwt = useCookie('jwt')
@@ -22,6 +22,7 @@ export const useAuth = () => {
             method: 'POST',
             body: JSON.stringify({ identity, password }),
         })
+        console.log(identity, password, data)
         if (data.value) {
             user.value = data.value
             const jwt = useCookie('jwt')
