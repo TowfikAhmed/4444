@@ -25,7 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/auth/', include('core.api.auth.urls')),
     path('api/dash/', include('core.api.dash.urls')),
-    # path('', index, name='index'),
+    path('', index, name='index'),
     # path('<str:param>', index, name='index2'),
     # path('<str:param>/', index, name='index2'),
     # path('<str:param>/<str:param2>', index, name='index2'),
