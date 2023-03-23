@@ -19,5 +19,7 @@ urlpatterns = [
     path('proofs/<int:pk>', ProofViewSet.as_view({'get': 'retrieve'})),
     path('proofs/<int:pk>/delete', ProofViewSet.as_view({'delete': 'destroy'})),
     path('proofs/create', ProofViewSet.as_view({'post': 'create'})),
-    path('generate', generate)
+    path('generate', generate),
+    path('overview', overview),
+    path('myoverview', myoverview),
 ]

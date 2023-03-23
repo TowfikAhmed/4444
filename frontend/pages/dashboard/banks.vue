@@ -45,8 +45,10 @@
                                         </div>
                                     </td>
                                     <td class="text-dark border-b border-[#E8E8E8] bg-[#F3F6FF] px-2 text-center text-base font-medium">
-                                        <a @click="destroyAccount(account.id)" class="bg-primary cursor-pointer inline-flex items-center h-[50px] justify-center rounded px-6 text-center font-normal text-white hover:bg-opacity-90">Delete</a>
-                                        <a v-if="account.status == 'PENDING'" @click="approveAccount(account.id)" class="bg-primary cursor-pointer inline-flex items-center h-[50px] justify-center rounded px-6 text-center font-normal text-white hover:bg-opacity-90 ml-2">Approve</a>
+                                        <div class="flex gap-1 w-full flex-wrap">
+                                            <a @click="destroyAccount(account.id)" class="bg-primary cursor-pointer inline-flex items-center h-[30px] justify-center rounded px-4 text-center font-normal text-white hover:bg-opacity-90">Delete</a>
+                                            <a v-if="account.status == 'PENDING'" @click="approveAccount(account.id)" class="bg-primary cursor-pointer inline-flex items-center h-[30px] justify-center rounded px-4 text-center font-normal text-white hover:bg-opacity-90">Approve</a>
+                                        </div>
                                     </td>
                                 </tr>
                         
@@ -73,10 +75,15 @@
                       </div>
                       <div class="relative mt-6 flex-1 px-4 sm:px-6">
                         <div class="my-4">
+                            <select v-model="newAccount.group" class="w-full border border-gray-200 p-2 rounded mt-1">
+                                <option value="">Select Group</option>
+                                <option v-for="group in groups.results" :value="group.id">{{ group.name }}</option>
+                            </select>
                             <div class="w-full mt-4">
                                 <label class="text-xs text-gray-600">Username</label>
-                                <textarea v-model="newAccount" rows="10" class="w-full border border-gray-200 p-2 rounded mt-1" placeholder="Username"></textarea>
+                                <textarea v-model="newAccount.accounts" rows="10" class="w-full border border-gray-200 p-2 rounded mt-1" placeholder="Username"></textarea>
                             </div>
+                            <p class="text-rose-500 my-4" v-if="newAccount.error">{{ newAccount.error }}</p>
                             <div class="w-full mt-4">
                                 <button @click="createAccount" class="bg-primary inline-flex items-center h-[50px] justify-center rounded px-6 text-center font-normal text-white hover:bg-opacity-90">Add accounts</button>
                             </div>
@@ -135,11 +142,17 @@ const destroyAccount = async (id) =>{
 } 
 
 const addForm = ref(false) 
-const newAccount = ref('')
+const newAccount = ref({
+    group: '',
+    accounts: '',
+    error: ''
+})
 const createAccount = async () => {
-    if( !newAccount.value){
+    if( !newAccount.value.accounts || !newAccount.value.group){
+        newAccount.value.error = 'Please fill all fields'
         return
     }
+    newAccount.value.error = ''
     const response = await Api.post('/api/dash/banks/create', newAccount.value)
     console.log(response);
     getAccounts()
@@ -156,6 +169,14 @@ const destroyProof = async(id)=>{
     console.log(response);
     getAccounts()
 }
+
+const groups = ref([])
+const getGroups = async () => {
+    const response = await Api.get('/api/dash/groups')
+    groups.value = response.data
+}
+getGroups()
+
 </script>
 
 <style>

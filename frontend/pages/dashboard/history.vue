@@ -21,7 +21,7 @@
                                     <th class="w-1/6 min-w-[160px] border-l border-transparent py-3 px-3 text-lg font-semibold text-white">Account</th>
                                     <th class="w-1/6 min-w-[160px] py-3 px-3 text-lg font-semibold text-white">Routing</th>
                                     <th class="w-1/6 min-w-[160px] py-3 px-3 text-lg font-semibold text-white">Status</th>
-                                    <th class="w-1/6 min-w-[160px] py-3 px-3 text-lg font-semibold text-white">Transaction</th>
+                                    <th class="w-2/6  xl:w-1/6  max-w-[100px] min-w-[100px] py-3 px-3 text-lg font-semibold text-white">Transaction</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -33,13 +33,13 @@
                                         <span class="text-pink-500 font-bold" v-else-if="account.status == 'PENDING'">{{ account.status }}</span>
                                         <span class="text-lime-500 font-bold" v-else>{{ account.status }}</span>
                                     </td>
-                                    <td class="text-dark border-b border-[#E8E8E8] bg-white py-0 px-2 text-center text-base font-medium cursor-pointer">
-                                        <div class="w-full my-1 text-left flex items-center justify-between" v-for="proof in account.proof_set" :key="proof.id">
+                                    <td class="text-dark max-w-[100px] border-b border-[#E8E8E8] bg-white py-0 px-2 text-center text-base font-medium cursor-pointer">
+                                        <div class="w-full bg-gray-100 my-1 text-left flex items-center justify-between px-2" v-for="proof in account.proof_set" :key="proof.id">
                                             <span class="flex-1">${{ proof.amount }}</span>
-                                            <span @click="viewProof=proof" class="flex-1 text-sm text-indigo-400 border p-1 rounded text-center bg-gray-50">See Proof</span>
-                                            <span @click="destroyProof(proof.id)" class="px-1"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M7 21q-.825 0-1.413-.588T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.588 1.413T17 21H7ZM17 6H7v13h10V6ZM9 17h2V8H9v9Zm4 0h2V8h-2v9ZM7 6v13V6Z"/></svg></span>
+                                            <span @click="viewProof=proof" class="flex-1 text-sm text-indigo-400 p-1 text-center bg-gray-50">See Proof</span>
+                                            <span @click="destroyProof(proof.id)" class="px-1 bg-rose-100 text-slate-700"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M7 21q-.825 0-1.413-.588T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.588 1.413T17 21H7ZM17 6H7v13h10V6ZM9 17h2V8H9v9Zm4 0h2V8h-2v9ZM7 6v13V6Z"/></svg></span>
                                         </div>
-                                        <span @click="addProof=account" class="text-sm">+ Add Proof</span>
+                                        <span @click="addProof=account" class="text-sm w-full text-center block bg-gray-100">+ Add Proof</span>
                                     </td>
                                 </tr>
                             </tbody>
@@ -96,20 +96,20 @@
                                     <div class="flex gap-1">    
                                         <input v-model="newProof.amount" type="text" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="0.00" required>
                                         <div class="sh" v-if="!newProof.screenshot">
-                                            <input @change="imageAdded(newProof)" type="file" class="hidden" :id="newProof.id" />
-                                            <label :for="newProof.id" class="flex-1 h-10 flex gap-1 justify-center items-center border text-sm p-3 rounded text-slate-400 cursor-pointer shadow hover:shadow-lg">
+                                            <input @change="imageAdded()" type="file" class="hidden" id="newProofImg" />
+                                            <label for="newProofImg" class="flex-1 h-10 flex gap-1 justify-center items-center border text-sm p-3 rounded text-slate-400 cursor-pointer shadow hover:shadow-lg">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 2048 2048"><path fill="currentColor" d="M1408 576q0-26 19-45t45-19q26 0 45 19t19 45q0 26-19 45t-45 19q-26 0-45-19t-19-45zm640 960v128h-256v256h-128v-256h-256v-128h256v-256h128v256h256zM922 1216l358 357v91H0V256h1792v896h-128V384H128v421l192-191l512 512l256-256l448 447v91h-91l-357-358l-166 166zM320 794L128 987v549h933L320 794z"></path></svg>
                                                 <p class="text-sm text-gray-500 whitespace-nowrap">Add Screenshot</p>
                                             </label>
                                         </div>
                                         <div class="sh" v-else>
-                                            <img  class="h-10 shadow border object-cover rounded" />
+                                            <img :src="newProof.screenshot" class="h-10 shadow border object-cover rounded" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="flex justify-end my-4 gap-1">
-                                <button class="bg-primary text-white px-4 py-2 rounded out">Submit Proof</button>
+                                <button @click="AddAnotherProof" class="bg-primary text-white px-4 py-2 rounded out">Submit Proof</button>
                             </div>
                             </div>
                         </div>
@@ -144,10 +144,27 @@ const newProof = ref({
     amount: '',
     sc: '',
 })
-const addProofs = async(id)=>{
-    const response = await Api.post('/api/dash/proofs/'+id+'/add')
+function imageAdded(){
+    const file = event.target.files[0]
+    const reader = new FileReader()
+    reader.onload = (e) => {
+        newProof.value.screenshot = e.target.result
+    }
+    reader.readAsDataURL(file)
+}
+async function AddAnotherProof(){
+    const response = await Api.post('/api/dash/proofs/create', {
+        account_id: addProof.value.id,
+        amount: newProof.value.amount,
+        screenshot: newProof.value.screenshot,
+    })
     console.log(response);
     getAccounts()
+    addProof.value = ''
+    newProof.value = {
+        amount: '',
+        sc: '',
+    }
 }
 </script>
 

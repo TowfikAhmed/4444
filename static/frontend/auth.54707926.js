@@ -1,0 +1,1 @@
+import{a2 as e,X as o}from"./entry.9c3217d9.js";import{u as a}from"./useAuth.6bfd9df3.js";import"./useApi.1e322299.js";const r=e((i,u)=>{const{isAuthenticated:t}=a();t.value||(console.log("isAuthenticated.value",t.value),o("/login"))});export{r as default};

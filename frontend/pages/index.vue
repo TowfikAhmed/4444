@@ -86,7 +86,7 @@
                     <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Forgot your password?</a>
                   </div>
                 </div>
-  
+                <p class="text-rose-700" v-if="logindata.error">{{ logindata.error }}</p>
                 <div>
                   <button @click.prevent="loginUser" class="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Sign in</button>
                 </div>
@@ -115,13 +115,19 @@
       const { login, jwtLogin, logout, user, isAuthenticated } = useAuth()
       const logindata = reactive({
           email: '',
-          password: ''
+          password: '',
+          error: ''
       })
       async function loginUser() {
           const res = await login(logindata.email, logindata.password)
-          if(res){
-              console.log('login success', res)
-              navigateTo('/dashboard')
+          if( !user.value){
+            logindata.error = 'Invalid Access'
+            return
+          }
+          if(user.value.user.type == 'ADMIN'){
+              navigateTo('/dashboard/banks')
+          }else if(user.value.user.type == 'WORKER'){
+              navigateTo('/dashboard/getbanks')
           }
       }
   </script>
