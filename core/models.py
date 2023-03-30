@@ -20,8 +20,9 @@ class Group(models.Model):
         return self.name
 
 class Bank(models.Model):
-    account = models.CharField(max_length=200)
     group = models.ForeignKey(Group, on_delete=models.CASCADE) 
+    name = models.CharField(max_length=50, null=True, blank=True)
+    account = models.CharField(max_length=200)
     routing = models.CharField(max_length=200)
     worker = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.SET_NULL, related_name='worker')
     history = models.ManyToManyField(Profile, blank=True)
@@ -49,5 +50,14 @@ class Proof(models.Model):
     def __str__(self):
         return self.bank.account
 
+
+class Message(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_messages')
+    participants = models.ManyToManyField(User, related_name='user_messages', blank=True)
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.author.username
 
 

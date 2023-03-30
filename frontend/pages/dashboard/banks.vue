@@ -19,7 +19,8 @@
                             <table class="w-full table-auto">
                             <thead>
                                 <tr class="bg-primary text-center">
-                                    <th class="w-1/6 min-w-[160px] border-l border-transparent py-3 px-3 text-lg font-semibold text-white">Account</th>
+                                    <th class="w-1/6 min-w-[160px] border-l border-transparent py-3 px-3 text-lg font-semibold text-white">Name</th>
+                                    <th class="w-1/6 min-w-[160px] py-3 px-3 text-lg font-semibold text-white">Account</th>
                                     <th class="w-1/6 min-w-[160px] py-3 px-3 text-lg font-semibold text-white">Routing</th>
                                     <th class="w-1/6 min-w-[160px] py-3 px-3 text-lg font-semibold text-white">Group</th>
                                     <th class="w-1/6 min-w-[160px] py-3 px-3 text-lg font-semibold text-white">Status</th>
@@ -29,7 +30,8 @@
                             </thead>
                             <tbody>
                                 <tr v-for="account in accounts.results" :key="account.id">
-                                    <td class="text-dark border-b border-l border-[#E8E8E8] bg-[#F3F6FF] h-16 px-2 text-center text-base font-medium">{{ account.account }}</td>
+                                    <td class="text-dark border-b border-l border-[#E8E8E8] bg-[#F3F6FF] h-16 px-2 text-center text-base font-medium">{{ account.name }}</td>
+                                    <td class="text-dark border-b border-[#E8E8E8] bg-white h-16 px-2 text-center text-base font-medium">{{ account.account }}</td>
                                     <td class="text-dark border-b border-[#E8E8E8] bg-white h-16 px-2 text-center text-base font-medium">{{ account.routing }}</td>
                                     <td class="text-dark border-b border-[#E8E8E8] bg-white h-16 px-2 text-center text-base font-medium">{{ account.group.name }}</td>
                                     <td class="text-dark border-b border-[#E8E8E8] bg-white h-16 px-2 text-center text-base font-medium">
@@ -80,7 +82,7 @@
                                 <option v-for="group in groups.results" :value="group.id">{{ group.name }}</option>
                             </select>
                             <div class="w-full mt-4">
-                                <label class="text-xs text-gray-600">Username</label>
+                                <label class="text-xs text-gray-600">EG: name:account:routing</label>
                                 <textarea v-model="newAccount.accounts" rows="10" class="w-full border border-gray-200 p-2 rounded mt-1" placeholder="Username"></textarea>
                             </div>
                             <p class="text-rose-500 my-4" v-if="newAccount.error">{{ newAccount.error }}</p>

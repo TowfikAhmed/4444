@@ -1,0 +1,1 @@
+import{s,o as t,l as o,G as r}from"./entry.96a761ac.js";const a={},c={class:"dark:bg-neutral-700"};function n(e,l){return t(),o("div",c,[r(e.$slots,"default")])}const d=s(a,[["render",n]]);export{d as default};

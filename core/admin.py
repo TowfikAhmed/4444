@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profile, Group, Bank, Proof
+from .models import Profile, Group, Bank, Proof, Message
 # Register your models here.
 
 class ProfileAdmin(admin.ModelAdmin):
@@ -30,7 +30,15 @@ class ProofAdmin(admin.ModelAdmin):
     ordering = ('bank',)
     filter_horizontal = ()
 
+class MessageAdmin(admin.ModelAdmin):
+    list_display = ('author', 'title', 'date',)
+    list_filter = ('author',)
+    search_fields = ('author',)
+    ordering = ('author',)
+    filter_horizontal = ()
+
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Group, GroupAdmin)
 admin.site.register(Bank, BankAdmin)
 admin.site.register(Proof, ProofAdmin)
+admin.site.register(Message, MessageAdmin)

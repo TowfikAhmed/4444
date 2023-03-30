@@ -103,7 +103,7 @@ class BankViewSet(viewsets.ModelViewSet):
         group = Group.objects.get(id=request.data['group'])
         for dataList in dataLists:
             dataList = dataList.split(':')
-            bank = Bank.objects.create(account=dataList[0], routing=dataList[1], group=group)
+            bank = Bank.objects.create(name=dataList[0], account=dataList[1], routing=dataList[2], group=group)
             bank.save()
         return Response(status=status.HTTP_201_CREATED) 
 
@@ -192,4 +192,31 @@ def myoverview(request):
         'live': Bank.objects.filter(status='LIVE').count()
     }
     return Response(stats)
+
+
+class MessageViewSet(viewsets.ModelViewSet):
+    queryset = Message.objects.all()
+    serializer_class = MessageSerializer
+    pagination_class = CustomPagination
+
+    def list(self, request):
+        delete = request.GET.get('delete', None)
+        if delete:
+            Message.objects.get(id=delete).delete()
+        queryset = Message.objects.all()
+        serializer = MessageSerializer(queryset, many=True)
+        paginator = CustomPagination()
+        result_page = paginator.paginate_queryset(queryset, request)
+        serializer = MessageSerializer(result_page, many=True)
+        return paginator.get_paginated_response(serializer.data)
+    def destroy(self, request, pk=None):
+        queryset = Profile.objects.all()
+        profile = get_object_or_404(queryset, pk=pk)
+        profile.user.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    def create(self, request):
+        data = request.data
+        new = Message.objects.create(title=data['title'], content=data['content'], author = request.user)
+        new.save()
+        return Response(status=status.HTTP_201_CREATED)
     

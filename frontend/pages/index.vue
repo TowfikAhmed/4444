@@ -125,9 +125,9 @@
             return
           }
           if(user.value.user.type == 'ADMIN'){
-              navigateTo('/dashboard/banks')
+              navigateTo('/dashboard/overview')
           }else if(user.value.user.type == 'WORKER'){
-              navigateTo('/dashboard/getbanks')
+              navigateTo('/dashboard/myoverview')
           }
       }
   </script>

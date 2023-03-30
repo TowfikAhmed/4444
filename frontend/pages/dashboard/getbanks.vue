@@ -5,6 +5,10 @@
         <button @click="generateAccount()" class="bg-primary max-w-sm mx-auto block text-center font-semibold text-xl border p-2 mb-8 rounded w-full text-slate-50">Generate Account</button>
         <div class="flex gap-2 mb-5" :class="{'cursor-none pointer-events-none opacity-30':!account}">
             <div class="mb-6 flex-1">
+              <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+              <input :value="account.name" type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="name@flowbite.com" required>
+            </div>
+            <div class="mb-6 flex-1">
               <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Account</label>
               <input :value="account.account" type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="name@flowbite.com" required>
             </div>
